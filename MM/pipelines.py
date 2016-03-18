@@ -19,7 +19,7 @@ sys.setdefaultencoding("utf-8")
 import MySQLdb
 class MmPipeline(object):
     def __init__(self):
-        # self.conn = cx_Oracle.connect('Dangban/85418825@202.115.44.140/ntci')
+        # self.conn = cx_Oracle.connect('db@host')
         self.conn =  MySQLdb.connect(host='172.16.190.166',user='root',passwd='root',db='weixin')
         self.cursor = self.conn.cursor()
 
