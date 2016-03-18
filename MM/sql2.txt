@@ -1,0 +1,11 @@
+import cx_Oracle
+conn = cx_Oracle.connect('Dangban/85418825@202.115.44.140/ntci')
+cursor = conn.cursor()
+sql1 = 'DELETE FROM WEIXIN_STATUSTIME_ASDAYS'
+cursor.execute(sql1)
+sql2 = '''INSERT INTO "DANGBAN"."WEIXIN_STATUSTIME_ASDAYS"(DS_CREATED_DATE, DS_CREATED_COUNT, DS_SEARCH_KEYS) 
+select PUBTIME,count(URL),SEARCHWORDS from WEIXIN_SEARCH_DATA group by SEARCHWORDS, PUBTIME'''
+conn.commit()
+cursor.close()
+conn.close()
+
